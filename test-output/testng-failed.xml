@@ -5,11 +5,9 @@
     <classes>
       <class name="test.AddCategoryTest">
         <methods>
-          <include name="dropDownShouldHaveAllMonths"/>
           <include name="tearDown"/>
           <include name="userShouldNotBeAbleToAddDuplicate"/>
           <include name="runEverything"/>
-          <include name="userShouldBeAbleToAddCategory"/>
         </methods>
       </class> <!-- test.AddCategoryTest -->
     </classes>

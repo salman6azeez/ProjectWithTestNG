@@ -20,7 +20,7 @@ public class AddCategoryTest {
 	ListPage listPage;
 	
 	Random rnd= new Random();
-	String categoryName= "Wasif"+rnd.nextInt(100);
+	String categoryName= "Salman"+rnd.nextInt(100);
 	String duplicateCategoryName = "duplicate" + rnd.nextInt(100);
 	
 	@BeforeMethod
@@ -31,21 +31,22 @@ public class AddCategoryTest {
 	}
 	
 	@Test(priority=1)
-	public void userShouldBeAbleToAddCategory() {
+	public void userShouldBeAbleToAddCategory() throws InterruptedException {
 		listPage.addCategory(categoryName);
 		List<String> actualList = listPage.getCategoryList();
 		Assert.assertTrue(BrowserFactory.doesDataExist(categoryName,actualList), "New Category Does Not Exist!!");
-		
+		Thread.sleep(2000);
 	}
 	@Test(priority=2)
-	public void userShouldNotBeAbleToAddDuplicate() {
+	public void userShouldNotBeAbleToAddDuplicate() throws InterruptedException {
 	listPage.addCategory(duplicateCategoryName);
 	listPage.addCategory(duplicateCategoryName);
 	Assert.assertTrue(listPage.duplicateMessageDisplayStatus(), "Duplicate Category Was Not Created!!");
+	Thread.sleep(2000);
 	}
 	
 	@Test(priority=3)
-	public void dropDownShouldHaveAllMonths() {
+	public void dropDownShouldHaveAllMonths() throws InterruptedException {
 		
 		
 		List<String> months = new ArrayList<String>();
@@ -66,6 +67,7 @@ public class AddCategoryTest {
 		
 		List<String> dropDownList = listPage.getMonthList();
 		Assert.assertTrue(BrowserFactory.doesDataMatch(months, dropDownList),"Values Do Not Match!!");
+		
 	
 		
 	}
